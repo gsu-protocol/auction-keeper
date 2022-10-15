@@ -19,7 +19,7 @@ import logging
 from typing import Optional, Tuple
 from web3 import Web3
 
-from auction_keeper.model import Status
+from model import Status
 from pymaker import Address, Transact
 from pymaker.approval import directly, hope_directly
 from pymaker.auctions import AuctionContract, Clipper, Flapper, Flipper, Flopper

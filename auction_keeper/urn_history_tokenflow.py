@@ -25,7 +25,7 @@ from web3 import Web3
 from pymaker import Address, Wad
 from pymaker.deployment import DssDeployment
 from pymaker.dss import Ilk, Urn
-from auction_keeper.urn_history import UrnHistoryProvider
+from urn_history import UrnHistoryProvider
 
 logger = logging.getLogger()
 

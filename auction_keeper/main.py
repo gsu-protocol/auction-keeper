@@ -37,14 +37,14 @@ from pymaker.lifecycle import Lifecycle
 from pymaker.model import Token
 from pymaker.numeric import Wad, Ray, Rad
 
-from auction_keeper.gas import DynamicGasPrice, UpdatableGasPrice
-from auction_keeper.logic import Auction, Auctions, Reservoir
-from auction_keeper.model import ModelFactory
-from auction_keeper.strategy import ClipperStrategy, FlipperStrategy, FlopperStrategy, FlapperStrategy, \
+from gas import DynamicGasPrice, UpdatableGasPrice
+from logic import Auction, Auctions, Reservoir
+from model import ModelFactory
+from strategy import ClipperStrategy, FlipperStrategy, FlopperStrategy, FlapperStrategy, \
     StrategyTakeAvailable
-from auction_keeper.urn_history import ChainUrnHistoryProvider
-from auction_keeper.urn_history_tokenflow import TokenFlowUrnHistoryProvider
-from auction_keeper.urn_history_vulcanize import VulcanizeUrnHistoryProvider
+from urn_history import ChainUrnHistoryProvider
+from urn_history_tokenflow import TokenFlowUrnHistoryProvider
+from urn_history_vulcanize import VulcanizeUrnHistoryProvider
 
 
 # from pymaker import Transact

@@ -19,7 +19,7 @@ import logging
 from pprint import pformat
 from typing import Optional
 
-from auction_keeper.process import Process
+from process import Process
 from pymaker import Address
 from pymaker.auctions import AuctionContract, Clipper, Flipper, Flapper, Flopper
 from pymaker.numeric import Wad, Ray, Rad
