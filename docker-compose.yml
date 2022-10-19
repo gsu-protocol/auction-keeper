@@ -4,27 +4,20 @@ services:
     build: .
     image: auction-keeper
     env_file:
-      - .env
+      - .bidenv
     volumes:
       - $PWD/hush:/home/keeper/hush
       - $PWD/model:/home/keeper/model
-    command: >
-      bash -c "python main.py --rpc-host=${ETH_RPC} --eth-from=${ETH_FROM} \
-      --eth-key='key_file=/home/keeper/hush/auction.json,pass_file=/home/keeper/hush/auction.pass' \
-      --bid-only --type='clip' --from-block=${BLOCK_NUMBER} --ilk=${ILK} \
-      --model=./model/model.sh"
-   
-  clipper_bid_keeper:
+      - $PWD/entry/bidder-entrypoint.sh:/home/keeper/docker-entrypoint.sh
+    entrypoint: /home/keeper/docker-entrypoint.sh
+  
+  clipper_kick_keeper:
      build: .
      image: auction-keeper
      env_file:
-       - .env
+       - .kickenv
      volumes:
        - $PWD/hush:/home/keeper/hush
-       - $PWD/model:/home/keeper/model
-     command: >
-       bash -c "python main.py --rpc-host=${ETH_RPC} --eth-from=${ETH_FROM} \
-       --eth-key='key_file=/home/keeper/hush/auction.json,pass_file=/home/     keeper/hush/auction.pass' \
-       --bid-only --type='clip' --from-block=${BLOCK_NUMBER} --ilk=${ILK} \
-       --model=./model/model.sh"
+       - $PWD/entry/kicker-entrypoint.sh:/home/keeper/docker-entrypoint.sh
+     entrypoint: /home/keeper/docker-entrypoint.sh
 

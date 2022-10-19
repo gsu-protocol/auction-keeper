@@ -367,7 +367,7 @@ cd auction-keeper
 git submodule update --init --recursive
 pip3 install -r requirements.txt
 ```
-As for configuration, please see the `env.example` file. 
+As for configuration, please see the `env.example` file. By default, the env config in docker-compose uses .bidenv and .kickenv files for bidder and kicker respectively.
 
 Make sure to change the addresses in `lib/pymaker/config` - use `testnet-addresses.json` file for custom/test networks and use `mainnet-addresses.json` for mainnet.
 
@@ -390,6 +390,8 @@ You will also need to setup `./hush/` and `./model` directories. Put the private
    sleep 25
  done
 ```
+
+Example docker entrypoints are in the `entry` folder, suitably named for bidder and kicker. They can be modified as required.
 
 
 ## Testing
