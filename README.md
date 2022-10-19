@@ -357,6 +357,43 @@ If you don't wish to run your own Ethereum node, third-party providers are avail
 with [ChainSafe](https://chainsafe.io/).  When using [Infura](https://infura.io/) and kicking off clip or flip auctions, 
 reduce `--chunk-size` to 1/10th of the default.
 
+## Docker Setup
+
+First clone the repo and its submodules:
+
+```
+git clone https://github.com/makerdao/auction-keeper.git
+cd auction-keeper
+git submodule update --init --recursive
+pip3 install -r requirements.txt
+```
+As for configuration, please see the `env.example` file. By default, the env config in docker-compose uses .bidenv and .kickenv files for bidder and kicker respectively.
+
+Make sure to change the addresses in `lib/pymaker/config` - use `testnet-addresses.json` file for custom/test networks and use `mainnet-addresses.json` for mainnet.
+
+You will also need to setup `./hush/` and `./model` directories. Put the private key json (`hush/auction.json`), private key password (`hush/auction.pass`) in `hush` and the pricing model for bidding `model.sh` in `model`, respectively. An example model file would look like:
+
+```
+ #!/usr/bin/env bash
+ 
+ while true; do
+ 
+   source ./env.sh
+ 
+   # dynamic bid price
+   body=$(curl -s -X GET "${FLIP_ETH_URL}" -H "accept: application/json")
+   ethPrice=$(echo ${body} | jq '.ethereum.usd')
+   bidPrice=$(bc -l <<< "${ethPrice} * (1-${FLIP_ETH_A_DISCOUNT})")
+ 
+   echo "{\"price\": \"${bidPrice}\"}"
+ 
+   sleep 25
+ done
+```
+
+Example docker entrypoints are in the `entry` folder, suitably named for bidder and kicker. They can be modified as required.
+
+
 ## Testing
 
 This project uses [pytest](https://docs.pytest.org/en/latest/) for unit testing.  Testing depends upon on a Dockerized

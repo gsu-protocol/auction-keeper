@@ -18,8 +18,8 @@
 import logging
 from typing import Optional
 
-from auction_keeper.gas import UpdatableGasPrice
-from auction_keeper.model import Stance, Parameters, Status, Model, ModelFactory
+from gas import UpdatableGasPrice
+from model import Stance, Parameters, Status, Model, ModelFactory
 from pymaker import Address, TransactStatus, Transact
 from pymaker.auctions import AuctionContract
 from pymaker.numeric import Rad

@@ -7,3 +7,7 @@ _virtualenv
 .coverage
 
 .DS_Store
+.env
+hush
+model
+build
