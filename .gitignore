@@ -10,5 +10,4 @@ _virtualenv
 .env
 hush
 model
-lib
 build
