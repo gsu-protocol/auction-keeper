@@ -21,3 +21,45 @@ services:
        - $PWD/entry/kicker-entrypoint.sh:/home/keeper/docker-entrypoint.sh
      entrypoint: /home/keeper/docker-entrypoint.sh
 
+  flopper_bid_keeper:
+    build: .
+    image: auction-keeper
+    env_file:
+      - .flopbid
+    volumes:
+      - $PWD/hush:/home/keeper/hush
+      - $PWD/model:/home/keeper/model
+      - $PWD/entry/bidder-flopper.sh:/home/keeper/docker-entrypoint.sh
+    entrypoint: /home/keeper/docker-entrypoint.sh
+  
+  flopper_kick_keeper:
+     build: .
+     image: auction-keeper
+     env_file:
+       - .flopkick
+     volumes:
+       - $PWD/hush:/home/keeper/hush
+       - $PWD/entry/kicker-flopper.sh:/home/keeper/docker-entrypoint.sh
+     entrypoint: /home/keeper/docker-entrypoint.sh   
+
+
+  flapper_bid_keeper:
+    build: .
+    image: auction-keeper
+    env_file:
+      - .flapbid
+    volumes:
+      - $PWD/hush:/home/keeper/hush
+      - $PWD/model:/home/keeper/model
+      - $PWD/entry/bidder-flapper.sh:/home/keeper/docker-entrypoint.sh
+    entrypoint: /home/keeper/docker-entrypoint.sh
+  
+  flapper_kick_keeper:
+     build: .
+     image: auction-keeper
+     env_file:
+       - .flapkick
+     volumes:
+       - $PWD/hush:/home/keeper/hush
+       - $PWD/entry/kicker-flapper.sh:/home/keeper/docker-entrypoint.sh
+     entrypoint: /home/keeper/docker-entrypoint.sh   

@@ -195,6 +195,7 @@ Please note **collateral types in the table above are provided for illustrative 
 as an endorsement of which collaterals should be deployed to mainnet**, which will be determined by an appropriate
 governance process.  A complete list of `ilk`s for a deployment may be gleaned from the `addresses.json`.
 
+
 ## Gas price strategy
 
 Auction keeper can use one of several sources for the initial gas price of a transaction:  
@@ -367,7 +368,7 @@ cd auction-keeper
 git submodule update --init --recursive
 pip3 install -r requirements.txt
 ```
-As for configuration, please see the `env.example` file. By default, the env config in docker-compose uses .bidenv and .kickenv files for bidder and kicker respectively.
+As for configuration, please see the `env.example` file. Out of the box, the docker-compose uses differently named env files for each configuration. 
 
 Make sure to change the addresses in `lib/pymaker/config` - use `testnet-addresses.json` file for custom/test networks and use `mainnet-addresses.json` for mainnet.
 
@@ -391,7 +392,7 @@ You will also need to setup `./hush/` and `./model` directories. Put the private
  done
 ```
 
-Example docker entrypoints are in the `entry` folder, suitably named for bidder and kicker. They can be modified as required.
+Example docker entrypoints are in the `entry` folder. They may be modified as required.
 
 
 ## Testing
